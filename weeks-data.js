@@ -56,3 +56,18 @@ var WEEKS=[
 {n:"End-of-course reflection",m:60,u:"Fri May 7, 23:59",o:"300&ndash;400 words revisiting the three habits you chose in Week 1. What changed in how you learn and how you see the world?",s:"Student Folder &rarr; Week 14.",w:"Closes the loop that opened in Week 1."}]}
 ];
 var SHORT={1:"Launch",2:"Habits",3:"Iceberg",4:"Loops",5:"Delays",6:"Archetypes",7:"Commons",8:"Midterm",9:"Community",10:"Leverage",11:"Perspectives",12:"Storyboard",13:"Final",14:"Submit"};
+/* Weekly Watch videos: [title, source &middot; focus, label, url]. Rendered in each week's "Watch" section. */
+var VIDEOS={
+1:[["How the Modern World Makes Us Mentally Ill","The School of Life &middot; How systems shape personal problems","YouTube","https://www.youtube.com/watch?v=yO0v_JqxFmQ"]],
+2:[["How Our Past Influences Our Present","The School of Life &middot; Mental models","YouTube","https://www.youtube.com/watch?v=QSamfnvVLcw"]],
+3:[["What It&rsquo;s Like Inside Our Minds","The School of Life &middot; What sits below the surface","YouTube","https://www.youtube.com/watch?v=bEFOF7j7XU0"]],
+4:[["Systems Thinking 101","Anna Justice, TEDxFurmanU &middot; Building a causal loop","YouTube","https://www.youtube.com/watch?v=bNASybOzruM"],["Balancing Loops","Climate Interactive &middot; Optional extra","YouTube","https://www.youtube.com/watch?v=vmcunCwX6Fc"]],
+5:[["Stocks and Flows","Climate Interactive &middot; Accumulations and the bathtub","YouTube","https://www.youtube.com/watch?v=nRlYGDBGcRA"]],
+6:[["Limits to Growth Systems Archetype","Archetype explainer","YouTube","https://www.youtube.com/watch?v=3aTypHzVyTE"],["Success to the Successful Systems Archetype","Archetype explainer","YouTube","https://www.youtube.com/watch?v=vSYwKEgEJNw"],["Meritocracy","The School of Life &middot; Success to the Successful in real life","YouTube","https://www.youtube.com/watch?v=bTDGdKaMDhQ"]],
+7:[["What is the tragedy of the commons?","TED-Ed &middot; Nicholas Amendolare","YouTube","https://www.youtube.com/watch?v=CxC161GvMPc"]],
+9:[["The Real Power of Community","The School of Life &middot; Community","YouTube","https://www.youtube.com/watch?v=JK7mGE3_Awg"]],
+10:[["Leverage Points: Places to Intervene in a System","Community Climate Coaches &middot; Preview of the Meadows reading","YouTube","https://www.youtube.com/watch?v=ZKdyIz14Niw"],["Why You Can Change The World","The School of Life &middot; Optional warm-up","YouTube","https://www.youtube.com/watch?v=jxiYsgyn1yU"]],
+11:[["What is Literature for?","The School of Life &middot; Seeing through other eyes","YouTube","https://www.youtube.com/watch?v=4RCFLobfqcw"],["What Do I Project onto Other People?","The School of Life &middot; Optional extra","YouTube","https://www.youtube.com/watch?v=156C-c48ezU"]],
+12:[["Why We Only Learn When We Repeat","The School of Life &middot; Draft, feedback, revise","YouTube","https://www.youtube.com/watch?v=Qbz7DC94G2U"]]
+};
+WEEKS.forEach(function(w){if(VIDEOS[w.n]){w.v=VIDEOS[w.n]}});

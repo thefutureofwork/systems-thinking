@@ -167,22 +167,22 @@ a{color:inherit}
 <div class="sec" id="map"><span class="sn">03</span><h2>Map</h2><p>Uncover causal relationships and identify feedback loops</p></div>
 <div class="blk"><div class="blk-h"><span class="t-tpl">Template</span><em>Connect, label, look for loops</em></div><div class="blk-b">
 <div class="q"><label for="m1">1. Draw causal links</label><small>For each pair: does a change in A directly cause a change in B? If yes, draw an arrow from A to B. List your links as "A → B."</small><textarea id="m1" data-k="m1"></textarea></div>
-<div class="q"><label for="m2">2. Mark each link's polarity</label><small>+ if A and B move in the same direction. − if they move in opposite directions. Mark any link where the effect takes time with a delay sign (||).</small><textarea id="m2" data-k="m2"></textarea></div>
-<div class="q"><label for="m3">3. Find the feedback loops</label><small>Follow arrows until you return to where you started. Count the − signs: even = reinforcing (R), odd = balancing (B).</small><textarea id="m3" data-k="m3"></textarea></div>
+<div class="q"><label for="m2">2. Label each link s or o</label><small><b>s</b> (same direction) if A and B move the same way. <b>o</b> (opposite direction) if they move in opposite ways. Mark any link where the effect takes time with a delay sign (||).</small><textarea id="m2" data-k="m2"></textarea></div>
+<div class="q"><label for="m3">3. Find the feedback loops</label><small>Follow arrows until you return to where you started. Count the <b>o</b> links: an even number (or zero) = reinforcing (R), an odd number = balancing (B).</small><textarea id="m3" data-k="m3"></textarea></div>
 <div class="q"><label for="m4">4. Name every loop</label><small>Give each loop a short, memorable name that describes the story it tells.</small><textarea id="m4" data-k="m4"></textarea></div>
 </div></div>
 <div class="blk"><div class="blk-h"><span class="t-bg">Background</span><em>The visual language of system maps</em></div><div class="blk-b">
 <p>A system map (also called a <b>causal loop diagram</b>) shows variables and the causal links between them. Its most important feature is the <b>feedback loop</b>: a closed chain of cause and effect. Loops, not single causes, explain why systems behave the way they do over time.</p>
 <div class="legend">
-<div><b>+</b>Same direction. More A leads to more B; less A leads to less B.</div>
-<div><b>−</b>Opposite direction. More A leads to less B; less A leads to more B.</div>
+<div><b>s</b>Same direction. More A leads to more B; less A leads to less B.</div>
+<div><b>o</b>Opposite direction. More A leads to less B; less A leads to more B.</div>
 <div><b>R</b>Reinforcing loop. Amplifies change: a virtuous or a vicious cycle.</div>
 <div><b>B</b>Balancing loop. Pushes back toward stability, and can resist needed change.</div>
 </div>
 <p><b>Delays</b> matter. When an effect takes weeks or months to appear, people often overreact or give up too early.</p>
 </div></div>
 <div class="blk"><div class="blk-h"><span class="t-ex">Example</span><em>Worked case: two loops around one variable</em></div><div class="blk-b">
-<div class="cld" role="img" aria-label="Causal loop diagram. Reinforcing loop R1, Shortcut Spiral: more AI use for drafting leads to less practice writing from scratch, which leads to lower writing confidence, which leads to more AI use. Balancing loop B1, Detection Pressure: more AI use leads, after a delay, to more instructor monitoring, which raises the perceived risk of AI use, which reduces AI use.">
+<div class="cld" role="img" aria-label="Causal loop diagram. Reinforcing loop R1, Shortcut Spiral: more AI use for drafting leads to less practice writing from scratch (o), which leads to lower writing confidence (s), which leads to more AI use (o). Balancing loop B1, Detection Pressure: more AI use leads, after a delay, to more instructor monitoring (s), which raises the perceived risk of AI use (s), which reduces AI use (o).">
 <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" font-family="Public Sans, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#F2A81D"/></marker></defs>
 <g stroke="#F2A81D" stroke-width="2.2" fill="none" marker-end="url(#ah)">
@@ -194,8 +194,8 @@ a{color:inherit}
 <path d="M190 306 Q230 260 300 222"/>
 </g>
 <g font-family="Azeret Mono, monospace" font-weight="700" font-size="20" fill="#F2A81D" text-anchor="middle">
-<text x="222" y="128">−</text><text x="360" y="30">+</text><text x="500" y="128">−</text>
-<text x="502" y="262">+</text><text x="360" y="384">+</text><text x="220" y="262">−</text>
+<text x="222" y="128">o</text><text x="360" y="30">s</text><text x="500" y="128">o</text>
+<text x="502" y="262">s</text><text x="360" y="384">s</text><text x="220" y="262">o</text>
 </g>
 <text x="530" y="276" font-family="Azeret Mono, monospace" font-size="16" font-weight="700" fill="#F2A81D">||</text>
 <g font-size="14" fill="#14161A" font-weight="600" text-anchor="middle">
@@ -211,8 +211,8 @@ a{color:inherit}
 </g>
 </svg>
 </div>
-<div class="ex"><b>R1 Shortcut Spiral (reinforcing):</b> AI use − practice + confidence − AI use. Two − signs, so the loop amplifies itself: the less students practice, the less confident they feel, and the more they reach for AI.</div>
-<div class="ex"><b>B1 Detection Pressure (balancing, with delay):</b> AI use + monitoring + perceived risk − AI use. One − sign, so it pushes AI use back down, but only after instructors notice, and it does nothing to rebuild confidence.</div>
+<div class="ex"><b>R1 Shortcut Spiral (reinforcing):</b> AI use → practice (o) → confidence (s) → AI use (o). Two o links, so the loop amplifies itself: the less students practice, the less confident they feel, and the more they reach for AI.</div>
+<div class="ex"><b>B1 Detection Pressure (balancing, with delay):</b> AI use → monitoring (s) → perceived risk (s) → AI use (o). One o link, so it pushes AI use back down, but only after instructors notice, and it does nothing to rebuild confidence.</div>
 </div></div>
 
 <!-- 04 SHARE -->
@@ -254,7 +254,7 @@ a{color:inherit}
 </div></div>
 <div class="blk"><div class="blk-h"><span class="t-ex">Example</span><em>Worked case</em></div><div class="blk-b">
 <div class="ex"><b>Scenario:</b> If only Detection Pressure operates, AI use rises and falls with monitoring while confidence keeps sliding. Instructors burn time policing; students learn to hide AI use.</div>
-<div class="ex"><b>New loop R2 Skill Payoff (reinforcing):</b> practice + writing quality + feedback quality + confidence + practice. A virtuous cycle that competes with the Shortcut Spiral.</div>
+<div class="ex"><b>New loop R2 Skill Payoff (reinforcing):</b> practice → writing quality (s) → feedback quality (s) → confidence (s) → practice (s). Zero o links, so it is a virtuous cycle that competes with the Shortcut Spiral.</div>
 <div class="ex"><b>Leverage point (rules and goals):</b> shift the goal from "don't get caught" to "show your thinking." Process-based assessment (drafts, notes, and transparent AI-use logs in the Student Folder) rewards practice directly and feeds R2.</div>
 <div class="ex"><b>Leverage point (mindsets):</b> teach AI literacy as a skill, so AI becomes a tool for feedback on a student's own draft rather than a replacement for drafting.</div>
 </div></div>

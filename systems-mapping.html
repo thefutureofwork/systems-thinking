@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EAP 101: System Mapping Toolkit</title>
+<meta name="description" content="EAP 101: Systems Thinking. A five-stage system mapping toolkit: frame, explore, map, share, analyze. NYU Shanghai, Spring 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Public+Sans:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--board:#14161A;--board-2:#1E2127;--amber:#F2A81D;--paper:#FAF9F7;--card:#FFFFFF;--ink:#1A1C20;--ink-2:#4A4E56;--ink-3:#787D86;--rule:#DEDAD2;--rule-2:#EBE8E2;--signal:#B02418;--signal-bg:#FBEDEB;--go:#1F6B4A;--go-bg:#EAF3EE;--amber-bg:#FDF3DF;--r:4px}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Public Sans',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.62;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Archivo',system-ui,sans-serif;line-height:1.06;letter-spacing:-0.02em}
+a{color:inherit}
+.mast{position:sticky;top:0;z-index:60;background:var(--board);border-bottom:3px solid var(--amber)}
+.mast-in{max-width:1000px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:24px}
+.mark{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:15px;letter-spacing:.1em;color:#fff;text-decoration:none;white-space:nowrap}
+.mark span{color:var(--amber)}
+.mast nav{margin-left:auto;display:flex;gap:4px}
+.mast nav a{font-family:'Azeret Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:#A9AEB8;text-decoration:none;padding:8px 14px;border-radius:var(--r);transition:background .18s,color .18s}
+.mast nav a:hover{background:var(--board-2);color:#fff}
+.mast nav a[aria-current]{color:var(--board);background:var(--amber)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+.hero{background:var(--board);color:#fff;border-radius:6px;margin:32px 0 0;padding:34px 30px 30px;box-shadow:0 18px 44px rgba(20,22,26,.20)}
+.kick{font-family:'Azeret Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+.hero h1{font-variation-settings:'wdth' 116,'wght' 800;font-size:clamp(2rem,6vw,3.2rem);text-transform:uppercase;margin-top:10px}
+.hero p{color:#C6CBD4;max-width:62ch;margin-top:14px;font-size:16.5px}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:26px}
+.flow a{text-decoration:none;background:var(--board-2);border:1px solid #2C3039;border-radius:var(--r);padding:14px 12px;transition:all .18s}
+.flow a:hover{border-color:var(--amber);transform:translateY(-2px)}
+.flow .fn{display:block;font-family:'Azeret Mono',monospace;font-size:12px;font-weight:700;color:var(--amber)}
+.flow .ft{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 110,'wght' 700;font-size:17px;margin-top:4px}
+.flow .fs{display:block;font-size:12.5px;color:#9AA0AA;line-height:1.35;margin-top:4px}
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 0}
+.lv{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--amber);border-radius:var(--r);padding:15px 18px}
+.lv b{display:block;font-family:'Azeret Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
+.lv p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.sec{margin-top:64px;margin-bottom:18px;display:flex;align-items:baseline;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:11px}
+.sec .sn{font-family:'Azeret Mono',monospace;font-size:clamp(2rem,6vw,2.8rem);font-weight:700;color:var(--amber);line-height:.85;letter-spacing:-.04em}
+.sec h2{font-variation-settings:'wdth' 112,'wght' 800;font-size:1.6rem;text-transform:uppercase;letter-spacing:.01em}
+.sec p{font-family:'Azeret Mono',monospace;font-size:11.5px;color:var(--ink-3);margin-left:auto;letter-spacing:.05em;text-align:right;max-width:280px}
+.blk{background:var(--card);border:1px solid var(--rule);border-radius:5px;margin-top:12px;overflow:hidden}
+.blk-h{display:flex;align-items:center;gap:10px;padding:12px 20px;background:var(--paper);border-bottom:1px solid var(--rule-2)}
+.blk-h span{font-family:'Azeret Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:4px 9px;border-radius:3px}
+.t-tpl{background:var(--board);color:var(--amber)}
+.t-bg{background:#EDEBFF;color:#3F3A8C}
+.t-ex{background:var(--go-bg);color:var(--go)}
+.blk-h em{font-style:normal;font-size:13.5px;color:var(--ink-3)}
+.blk-b{padding:18px 22px 20px}
+.blk-b p{font-size:15px;color:var(--ink-2);max-width:72ch;margin-top:10px}
+.blk-b p:first-child{margin-top:0}
+.blk-b ul,.blk-b ol{margin:10px 0 0 20px;font-size:15px;color:var(--ink-2)}
+.blk-b li{margin-top:5px}
+.blk-b b{color:var(--ink)}
+.q{margin-top:16px}
+.q:first-child{margin-top:0}
+.q label{display:block;font-weight:700;font-size:15px;line-height:1.4}
+.q small{display:block;font-size:13.5px;color:var(--ink-3);margin-top:2px}
+.q textarea{width:100%;min-height:74px;margin-top:8px;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--rule);border-radius:var(--r);background:var(--paper);resize:vertical;color:var(--ink)}
+.q textarea:focus{border-color:var(--ink-3);background:#fff}
+.ex{background:var(--paper);border-left:3px solid var(--go);border-radius:3px;padding:12px 16px;margin-top:12px;font-size:14.5px;color:var(--ink-2)}
+.ex b{color:var(--ink)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pill{font-size:13.5px;background:var(--card);border:1px solid var(--rule);border-radius:999px;padding:4px 11px;color:var(--ink-2)}
+.cl{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.cl div{background:var(--paper);border:1px solid var(--rule-2);border-radius:var(--r);padding:12px 14px}
+.cl b{display:block;font-family:'Azeret Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.cl span{font-size:14px;color:var(--ink-2)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.cmp div{border-radius:var(--r);padding:12px 14px;font-size:14.5px}
+.cmp .no{background:var(--signal-bg);color:var(--signal)}
+.cmp .yes{background:var(--go-bg);color:var(--go)}
+.cmp b{display:block;font-family:'Azeret Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.legend div{background:var(--board);color:#DDE1E7;border-radius:var(--r);padding:12px;font-size:13.5px;line-height:1.4}
+.legend b{display:block;font-family:'Azeret Mono',monospace;color:var(--amber);font-size:18px;margin-bottom:4px}
+.cld{background:var(--board);border-radius:5px;margin-top:14px;padding:10px}
+.cld svg{width:100%;height:auto;display:block}
+.tools{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.tools button,.tools a{font-family:'Azeret Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:10px 16px;border-radius:3px;border:1px solid var(--rule);background:var(--card);color:var(--ink);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;transition:all .18s}
+.tools .pri{background:var(--board);color:var(--amber);border-color:var(--board)}
+.tools button:hover,.tools a:hover{border-color:var(--ink)}
+.saved{font-family:'Azeret Mono',monospace;font-size:11px;color:var(--go);align-self:center}
+.credit{margin-top:56px;background:var(--amber-bg);border-left:4px solid var(--amber);border-radius:4px;padding:16px 20px;font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.credit a{font-weight:600;text-decoration-color:var(--amber);text-underline-offset:2px}
+.foot{background:var(--board);margin-top:64px;padding:30px 0;color:#6E7480}
+.foot-b{max-width:1000px;margin:0 auto;padding:0 24px;font-family:'Azeret Mono',monospace;font-size:11px;letter-spacing:.05em}
+.skip-link{position:absolute;left:16px;top:8px;z-index:100;padding:10px 16px;background:var(--amber);color:var(--board);font-family:'Azeret Mono',monospace;font-size:11.5px;font-weight:700;text-decoration:none;border-radius:3px;transform:translateY(-300%)}
+.skip-link:focus{transform:translateY(0)}
+:where(a,button,summary,textarea):focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+@media(max-width:820px){.flow{grid-template-columns:repeat(2,1fr)}.levels,.legend{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){body{font-size:16px}.wrap,.mast-in{padding-left:16px;padding-right:16px}.hero{padding:26px 20px}.levels,.cl,.cmp,.legend{grid-template-columns:1fr}.sec{flex-wrap:wrap}.sec p{margin-left:0;text-align:left}.blk-b{padding:16px}}
+@media print{.mast,.tools,.skip-link,.foot{display:none!important}.hero,.legend div,.cld{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}.blk{break-inside:avoid}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="mast"><div class="mast-in"><a class="mark" href="index.html">EAP<span>101</span></a><nav aria-label="Primary"><a href="index.html">Schedule</a><a href="systems-mapping.html" aria-current="page">Mapping Toolkit</a></nav></div></header>
+<main class="wrap" id="main-content">
+
+<section class="hero">
+<div class="kick">NYU Shanghai &middot; English for Academic Purposes &middot; EAP 101</div>
+<h1>System Mapping Toolkit</h1>
+<p>A step-by-step guide for making sense of a complex challenge and finding where change is possible. You will frame a problem, explore what drives it, map the cause-and-effect loops, tell the story of your map, and analyze it for leverage.</p>
+<nav class="flow" aria-label="Toolkit stages">
+<a href="#frame"><span class="fn">01</span><span class="ft">Frame</span><span class="fs">Set goals and boundaries</span></a>
+<a href="#explore"><span class="fn">02</span><span class="ft">Explore</span><span class="fs">Collect and cluster variables</span></a>
+<a href="#map"><span class="fn">03</span><span class="ft">Map</span><span class="fs">Link causes, find loops</span></a>
+<a href="#share"><span class="fn">04</span><span class="ft">Share</span><span class="fs">Tell your system story</span></a>
+<a href="#analyze"><span class="fn">05</span><span class="ft">Analyze</span><span class="fs">Scenarios and leverage</span></a>
+</nav>
+</section>
+
+<div class="levels">
+<div class="lv"><b>Template</b><p>Targeted questions and tasks for you or your team. Your answers save in this browser.</p></div>
+<div class="lv"><b>Background</b><p>The systems thinking ideas behind each step, and the language you will need.</p></div>
+<div class="lv"><b>Example</b><p>One worked case, carried through all five stages: student over-reliance on AI for writing.</p></div>
+</div>
+
+<!-- 01 FRAME -->
+<div class="sec" id="frame"><span class="sn">01</span><h2>Frame</h2><p>Set the stage, define your goals, frame your context</p></div>
+<div class="blk"><div class="blk-h"><span class="t-tpl">Template</span><em>Answer before you draw anything</em></div><div class="blk-b">
+<div class="q"><label for="f1">1. Why are we mapping this?</label><small>What do you want the map to help you do: understand, decide, persuade, or design an intervention?</small><textarea id="f1" data-k="f1"></textarea></div>
+<div class="q"><label for="f2">2. What is our guiding question?</label><small>Write one problem statement or question the whole map must answer. Start with "Why..." or "What drives..."</small><textarea id="f2" data-k="f2"></textarea></div>
+<div class="q"><label for="f3">3. Where is the system boundary?</label><small>Who and what is inside the map? What is deliberately left out? What place, scale, and time horizon are you looking at?</small><textarea id="f3" data-k="f3"></textarea></div>
+<div class="q"><label for="f4">4. Whose perspectives matter?</label><small>List the stakeholders who experience or influence the problem. Whose voice is missing from your team?</small><textarea id="f4" data-k="f4"></textarea></div>
+<div class="q"><label for="f5">5. What will we draw on?</label><small>Interviews, surveys, readings, data, your own experience. Note how reliable each source is.</small><textarea id="f5" data-k="f5"></textarea></div>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-bg">Background</span><em>A map is always about a problem</em></div><div class="blk-b">
+<p>A system map does not try to show "everything." It shows the causal logic behind <b>one specific challenge</b>. A clear guiding question keeps the team focused when the discussion gets messy, and it tells you what to leave out.</p>
+<p><b>Start narrow, then widen.</b> Complexity is overwhelming at first. Draw a tight boundary, map it well, and only then push the edges outward.</p>
+<p><b>Every map is a model.</b> It is a simplification of reality built from the mental models of the people who made it. That is a strength: the map makes hidden assumptions visible so others can test and challenge them.</p>
+<p><b>Agree how you will work.</b> Value every perspective, listen actively, and be willing to question your own assumptions. Mapping is slower than brainstorming; that is the point.</p>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-ex">Example</span><em>Worked case</em></div><div class="blk-b">
+<div class="ex"><b>Guiding question:</b> Why do some first-year students rely on generative AI to draft their academic writing, even when they want to improve as writers?</div>
+<div class="ex"><b>Boundary:</b> First-year students in one university writing program, over one semester. Inside: students, instructors, course AI policy, assignments, peers. Outside: national education policy, AI company business models.</div>
+<div class="ex"><b>Perspectives:</b> Students at different English levels, instructors, writing center tutors, program leaders. Missing so far: students who never use AI.</div>
+</div></div>
+
+<!-- 02 EXPLORE -->
+<div class="sec" id="explore"><span class="sn">02</span><h2>Explore</h2><p>Explore the essence of your issue, collect variables, find clusters</p></div>
+<div class="blk"><div class="blk-h"><span class="t-tpl">Template</span><em>Go wide, then sort</em></div><div class="blk-b">
+<div class="q"><label for="e1">1. Brainstorm every factor that shapes the problem</label><small>Work silently first (one factor per sticky note), then share. Aim for 20 or more.</small><textarea id="e1" data-k="e1"></textarea></div>
+<div class="q"><label for="e2">2. Rewrite each factor as a variable</label><small>A variable is something that can go up or down. Use neutral nouns: "writing confidence," not "lack of confidence."</small><textarea id="e2" data-k="e2"></textarea></div>
+<div class="q"><label for="e3">3. Cluster your variables</label><small>Group related variables and give each cluster a name. Which clusters feel most central to your guiding question?</small><textarea id="e3" data-k="e3"></textarea></div>
+<div class="q"><label for="e4">4. Choose your core variables</label><small>Pick the 8 to 12 variables you will start mapping with. Park the rest; you can bring them back later.</small><textarea id="e4" data-k="e4"></textarea></div>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-bg">Background</span><em>What makes a good variable</em></div><div class="blk-b">
+<p>Variables are the building blocks of your map. Each one should be <b>measurable in principle</b> (it can increase or decrease), <b>neutral</b> (no "lack of" or "too much"), and <b>specific</b> enough that two people would picture the same thing.</p>
+<div class="cmp"><div class="no"><b>Weak</b>Students are lazy &middot; Bad AI policy &middot; Too much homework</div><div class="yes"><b>Strong</b>Time spent drafting independently &middot; Clarity of AI policy &middot; Weekly assignment load</div></div>
+<p>Clustering shows you where the energy of the problem sits. Clusters often become the "neighborhoods" of your final map.</p>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-ex">Example</span><em>Worked case</em></div><div class="blk-b">
+<div class="cl">
+<div><b>Student pressures</b><span>Weekly assignment load &middot; Time pressure &middot; Grade pressure &middot; Fear of plagiarism penalties</span></div>
+<div><b>Skills and confidence</b><span>Writing confidence &middot; Practice writing from scratch &middot; English proficiency &middot; Writing quality</span></div>
+<div><b>Classroom and policy</b><span>Clarity of AI policy &middot; Instructor monitoring of AI use &middot; Quality of feedback &middot; Process-based assessment</span></div>
+<div><b>Tools and norms</b><span>AI use for drafting &middot; Peer norms around AI &middot; Perceived risk of AI use &middot; AI tool access</span></div>
+</div>
+</div></div>
+
+<!-- 03 MAP -->
+<div class="sec" id="map"><span class="sn">03</span><h2>Map</h2><p>Uncover causal relationships and identify feedback loops</p></div>
+<div class="blk"><div class="blk-h"><span class="t-tpl">Template</span><em>Connect, label, look for loops</em></div><div class="blk-b">
+<div class="q"><label for="m1">1. Draw causal links</label><small>For each pair: does a change in A directly cause a change in B? If yes, draw an arrow from A to B. List your links as "A → B."</small><textarea id="m1" data-k="m1"></textarea></div>
+<div class="q"><label for="m2">2. Mark each link's polarity</label><small>+ if A and B move in the same direction. − if they move in opposite directions. Mark any link where the effect takes time with a delay sign (||).</small><textarea id="m2" data-k="m2"></textarea></div>
+<div class="q"><label for="m3">3. Find the feedback loops</label><small>Follow arrows until you return to where you started. Count the − signs: even = reinforcing (R), odd = balancing (B).</small><textarea id="m3" data-k="m3"></textarea></div>
+<div class="q"><label for="m4">4. Name every loop</label><small>Give each loop a short, memorable name that describes the story it tells.</small><textarea id="m4" data-k="m4"></textarea></div>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-bg">Background</span><em>The visual language of system maps</em></div><div class="blk-b">
+<p>A system map (also called a <b>causal loop diagram</b>) shows variables and the causal links between them. Its most important feature is the <b>feedback loop</b>: a closed chain of cause and effect. Loops, not single causes, explain why systems behave the way they do over time.</p>
+<div class="legend">
+<div><b>+</b>Same direction. More A leads to more B; less A leads to less B.</div>
+<div><b>−</b>Opposite direction. More A leads to less B; less A leads to more B.</div>
+<div><b>R</b>Reinforcing loop. Amplifies change: a virtuous or a vicious cycle.</div>
+<div><b>B</b>Balancing loop. Pushes back toward stability, and can resist needed change.</div>
+</div>
+<p><b>Delays</b> matter. When an effect takes weeks or months to appear, people often overreact or give up too early.</p>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-ex">Example</span><em>Worked case: two loops around one variable</em></div><div class="blk-b">
+<div class="cld" role="img" aria-label="Causal loop diagram. Reinforcing loop R1, Shortcut Spiral: more AI use for drafting leads to less practice writing from scratch, which leads to lower writing confidence, which leads to more AI use. Balancing loop B1, Detection Pressure: more AI use leads, after a delay, to more instructor monitoring, which raises the perceived risk of AI use, which reduces AI use.">
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" font-family="Public Sans, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#F2A81D"/></marker></defs>
+<g stroke="#F2A81D" stroke-width="2.2" fill="none" marker-end="url(#ah)">
+<path d="M300 178 Q230 140 190 94"/>
+<path d="M242 62 Q360 30 478 62"/>
+<path d="M530 94 Q490 140 420 178"/>
+<path d="M420 222 Q490 262 530 306"/>
+<path d="M478 338 Q360 370 242 338"/>
+<path d="M190 306 Q230 260 300 222"/>
+</g>
+<g font-family="Azeret Mono, monospace" font-weight="700" font-size="20" fill="#F2A81D" text-anchor="middle">
+<text x="222" y="128">−</text><text x="360" y="30">+</text><text x="500" y="128">−</text>
+<text x="502" y="262">+</text><text x="360" y="384">+</text><text x="220" y="262">−</text>
+</g>
+<text x="530" y="276" font-family="Azeret Mono, monospace" font-size="16" font-weight="700" fill="#F2A81D">||</text>
+<g font-size="14" fill="#14161A" font-weight="600" text-anchor="middle">
+<rect x="260" y="178" width="200" height="44" rx="22" fill="#F2A81D"/><text x="360" y="205">AI use for drafting</text>
+<rect x="30" y="48" width="212" height="44" rx="22" fill="#FAF9F7"/><text x="136" y="75">Practice writing from scratch</text>
+<rect x="478" y="48" width="212" height="44" rx="22" fill="#FAF9F7"/><text x="584" y="75">Writing confidence</text>
+<rect x="478" y="308" width="212" height="44" rx="22" fill="#FAF9F7"/><text x="584" y="335">Instructor monitoring</text>
+<rect x="30" y="308" width="212" height="44" rx="22" fill="#FAF9F7"/><text x="136" y="335">Perceived risk of AI use</text>
+</g>
+<g text-anchor="middle" fill="#DDE1E7">
+<text x="360" y="112" font-family="Azeret Mono, monospace" font-size="22" font-weight="700" fill="#F2A81D">↻ R1</text><text x="360" y="134" font-size="13">Shortcut Spiral</text>
+<text x="360" y="290" font-family="Azeret Mono, monospace" font-size="22" font-weight="700" fill="#F2A81D">↺ B1</text><text x="360" y="312" font-size="13">Detection Pressure</text>
+</g>
+</svg>
+</div>
+<div class="ex"><b>R1 Shortcut Spiral (reinforcing):</b> AI use − practice + confidence − AI use. Two − signs, so the loop amplifies itself: the less students practice, the less confident they feel, and the more they reach for AI.</div>
+<div class="ex"><b>B1 Detection Pressure (balancing, with delay):</b> AI use + monitoring + perceived risk − AI use. One − sign, so it pushes AI use back down, but only after instructors notice, and it does nothing to rebuild confidence.</div>
+</div></div>
+
+<!-- 04 SHARE -->
+<div class="sec" id="share"><span class="sn">04</span><h2>Share</h2><p>Create your system story, share it, get feedback</p></div>
+<div class="blk"><div class="blk-h"><span class="t-tpl">Template</span><em>Turn the map into a narrative</em></div><div class="blk-b">
+<div class="q"><label for="s1">1. Pick your starting point</label><small>Which variable or loop is the clearest way into the problem for someone who has never seen your map?</small><textarea id="s1" data-k="s1"></textarea></div>
+<div class="q"><label for="s2">2. Write your system story</label><small>Walk through the map one loop at a time. Explain each loop in plain English, then show how the loops interact. Keep it under 300 words.</small><textarea id="s2" data-k="s2" style="min-height:140px"></textarea></div>
+<div class="q"><label for="s3">3. Test it with someone outside your team</label><small>Ask: What is clear? What is surprising? What is missing or wrong? Whose experience does this not match?</small><textarea id="s3" data-k="s3"></textarea></div>
+<div class="q"><label for="s4">4. Revise the map</label><small>What did you add, remove, or reconnect after feedback?</small><textarea id="s4" data-k="s4"></textarea></div>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-bg">Background</span><em>Maps work best when they bring people together</em></div><div class="blk-b">
+<p>A finished map can look like spaghetti to an outsider. A <b>system story</b> builds the map up step by step, so the listener sees how the problem emerges from the structure rather than from one villain.</p>
+<p>The map also works as a <b>boundary object</b>: people with different jobs, majors, or experience can all read it and contribute to it. Sharing it surfaces hidden assumptions and builds a shared understanding, which is the foundation for collective action.</p>
+<p><b>EAP connection:</b> your system story is a short academic argument. It needs a clear claim, a logical sequence, signposting ("This creates a second loop..."), and evidence for each link.</p>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-ex">Example</span><em>Worked case</em></div><div class="blk-b">
+<div class="ex">"When deadlines pile up, some students start drafting with AI. Each time they do, they skip the practice of writing from scratch, and their confidence quietly drops. Lower confidence makes the next shortcut more tempting: this is the <b>Shortcut Spiral</b>. Eventually instructors notice and increase monitoring, which raises the perceived risk and pushes AI use down: <b>Detection Pressure</b>. But this loop only suppresses the behavior. Confidence never recovers, so the spiral restarts as soon as monitoring relaxes."</div>
+<div class="ex"><b>Feedback from a writing tutor:</b> "You're missing feedback quality. When students get useful comments on their own drafts, confidence goes up." This became a new variable and a new loop (R2, below).</div>
+</div></div>
+
+<!-- 05 ANALYZE -->
+<div class="sec" id="analyze"><span class="sn">05</span><h2>Analyze</h2><p>Anticipate future scenarios, identify points of opportunity</p></div>
+<div class="blk"><div class="blk-h"><span class="t-tpl">Template</span><em>From understanding to action</em></div><div class="blk-b">
+<div class="q"><label for="a1">1. Play out scenarios</label><small>If nothing changes, which loop dominates over the next year? What happens if a key variable suddenly rises or falls?</small><textarea id="a1" data-k="a1"></textarea></div>
+<div class="q"><label for="a2">2. Find leverage points</label><small>Where could a small change shift a whole loop? Look for variables with many connections, loops you could strengthen or weaken, and goals or rules that drive behavior.</small><textarea id="a2" data-k="a2"></textarea></div>
+<div class="q"><label for="a3">3. Propose interventions</label><small>For each leverage point, describe one concrete action, who would take it, and which loop it targets. What unintended effects could it trigger?</small><textarea id="a3" data-k="a3"></textarea></div>
+<div class="q"><label for="a4">4. Reflect</label><small>How did your understanding of the problem change? Which assumption of yours did the map challenge?</small><textarea id="a4" data-k="a4"></textarea></div>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-bg">Background</span><em>Where to intervene in a system</em></div><div class="blk-b">
+<p>A <b>leverage point</b> is a place where a small, well-aimed change produces a large, lasting shift. Systems thinker Donella Meadows ranked leverage points from weak to strong. In simple terms:</p>
+<ol>
+<li><b>Numbers and parameters</b> (budgets, deadlines, caps): easy to change, usually weak.</li>
+<li><b>Feedback loops</b>: strengthening a virtuous loop or slowing a vicious one.</li>
+<li><b>Information flows</b>: who knows what, and when.</li>
+<li><b>Rules and goals</b>: what the system rewards and is trying to achieve.</li>
+<li><b>Mindsets</b>: the shared beliefs the whole system rests on. Hardest to shift, most powerful.</li>
+</ol>
+<p>Watch for <b>policy resistance</b>: a fix that targets a symptom often triggers a balancing loop that cancels it out.</p>
+</div></div>
+<div class="blk"><div class="blk-h"><span class="t-ex">Example</span><em>Worked case</em></div><div class="blk-b">
+<div class="ex"><b>Scenario:</b> If only Detection Pressure operates, AI use rises and falls with monitoring while confidence keeps sliding. Instructors burn time policing; students learn to hide AI use.</div>
+<div class="ex"><b>New loop R2 Skill Payoff (reinforcing):</b> practice + writing quality + feedback quality + confidence + practice. A virtuous cycle that competes with the Shortcut Spiral.</div>
+<div class="ex"><b>Leverage point (rules and goals):</b> shift the goal from "don't get caught" to "show your thinking." Process-based assessment (drafts, notes, and transparent AI-use logs in the Student Folder) rewards practice directly and feeds R2.</div>
+<div class="ex"><b>Leverage point (mindsets):</b> teach AI literacy as a skill, so AI becomes a tool for feedback on a student's own draft rather than a replacement for drafting.</div>
+</div></div>
+
+<div class="tools">
+<button type="button" class="pri" onclick="window.print()">Print or save as PDF</button>
+<button type="button" id="clear">Clear my answers</button>
+<a href="https://miro.com/templates/system-mapping-toolkit/" target="_blank" rel="noopener">Open the Miro board<span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)"> (opens in a new tab)</span></a>
+<span class="saved" id="saved" aria-live="polite"></span>
+</div>
+
+<div class="credit">Adapted for EAP 101 from the free <a href="https://miro.com/templates/system-mapping-toolkit/" target="_blank" rel="noopener">System Mapping Toolkit</a> by Gian Wieck and Fabian Gampp, <a href="https://www.system-mapping.com/toolkit" target="_blank" rel="noopener">System Mapping Academy</a>. Use their Miro board to build your map collaboratively; use this page to plan, take notes, and write your system story.</div>
+</main>
+<footer class="foot"><div class="foot-b">EAP 101: SYSTEMS THINKING &nbsp;/&nbsp; NYU SHANGHAI &nbsp;/&nbsp; SPRING 2027</div></footer>
+<script>
+(function(){var P='eap101-smt-';var t;var areas=document.querySelectorAll('textarea[data-k]');function flash(){var s=document.getElementById('saved');s.textContent='Saved in this browser';clearTimeout(t);t=setTimeout(function(){s.textContent=''},1600)}areas.forEach(function(a){try{var v=localStorage.getItem(P+a.dataset.k);if(v)a.value=v}catch(e){}a.addEventListener('input',function(){try{localStorage.setItem(P+a.dataset.k,a.value);flash()}catch(e){}})});document.getElementById('clear').addEventListener('click',function(){if(!confirm('Clear all your answers on this page?'))return;areas.forEach(function(a){a.value='';try{localStorage.removeItem(P+a.dataset.k)}catch(e){}})})})();
+</script>
+</body>
+</html>

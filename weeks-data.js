@@ -126,3 +126,25 @@ var interview=task(9,'Interview Plan');
 interview.o="Include who you will interview outside the university, why they are a good choice, <b>eight to ten questions</b>, consent wording, and a back-up interviewee.<br><b>Before finalizing:</b> read <i>Where Should We Start?</i> in "+source+". Use these planning prompts: What might this person see that my sources miss? Which assumption in my map could they challenge? Which question investigates structures instead of assigning blame?<br><b>Use the prompts to revise your existing eight to ten questions, not add another set.</b> For example, replace <i>Why don&rsquo;t people use the service?</i> with <i>What happens between someone needing the service and actually accessing it?</i> Follow up with <i>Can you describe a specific example?</i> or <i>What makes that easier or harder?</i><br>Ask open, neutral questions. Do not tell the interviewee what answer your map needs. One interview offers a perspective, not proof that everyone has the same experience. Include your revisions in the same Interview Plan; no separate submission.";
 interview.w="Goodman&rsquo;s advice to investigate what is not yet understood and seek different perspectives helps you test assumptions rather than collect agreement.";
 })();
+
+/* Five starter readings from The Systems Thinker, linked to existing tasks only.
+   Links verified 2026-11-16. Copyright-safe: external links and attribution only;
+   no article text, figures, or PDFs are copied into this repository. */
+(function(){
+function task(n,test){var w=WEEKS.filter(function(w){return w.n===n})[0];return w.k.filter(test)[0]}
+function ext(url,title,author){return "<a href='"+url+"' target='_blank' rel='noopener'><i>"+title+"</i></a> by "+author+", <i>The Systems Thinker</i>"}
+var use="<br><span style='font-size:13px;color:#787D86'>Read it on the original site. Do not copy, repost, or upload the full text, figures, or PDF. You may quote a short passage with the author, title, and link.</span>";
+function add(t,html){t.o+="<br><b>Starter reading:</b> "+html+use}
+add(task(4,function(t){return t.n==='Causal Loop Diagram 1'}),
+ ext('https://thesystemsthinker.com/causal-loop-construction-the-basics/','Causal Loop Construction: The Basics','Colleen Lannon')+". Use its four steps (name variables, draw links, label the loop, talk through it) to check your diagram. Then use "+
+ ext('https://thesystemsthinker.com/selecting-variable-names-for-causal-loop-diagrams/','Selecting Variable Names for Causal Loop Diagrams','Kellie Wardman')+" to revise your labels: use nouns, remove words like <i>good</i> or <i>decreasing</i>, and choose things that can rise or fall.");
+add(task(5,function(t){return t.n==='Behavior-over-time graph'}),
+ ext('https://thesystemsthinker.com/behavior-over-time-diagrams-seeing-dynamic-interrelationships/','Behavior Over Time Diagrams: Seeing Dynamic Interrelationships','Daniel Kim')+". Focus on the sections about events versus patterns and the five guidelines. On your existing graph, state your time horizon and one what-if prediction. You may skip the company details.");
+var pg="https://thesystemsthinker.com/wp-content/uploads/2016/01/PG02E-A-Pocket-Guide-to-Using-the-Archetypes.pdf";
+add(task(6,function(t){return t.n.indexOf('Reading 6:')===0}),
+ ext(pg,'A Pocket Guide to Using the Archetypes','Daniel H. Kim and Colleen P. Lannon')+" (PDF). Read only the <b>Limits to Success</b> and <b>Success to the Successful</b> panels. Use their questions to check your comparison table.");
+add(task(7,function(t){return t.n.indexOf('Reading 7:')===0}),
+ ext(pg,'A Pocket Guide to Using the Archetypes','Daniel H. Kim and Colleen P. Lannon')+" (PDF). Read only the <b>Tragedy of the Commons</b> panel. Use its first three questions (the commons, the incentives, the time frame) in your analysis.");
+add(task(10,function(t){return t.n.indexOf('Open to everyone?')===0}),
+ ext('https://thesystemsthinker.com/guidelines-for-designing-systemic-interventions/','Guidelines for Designing Systemic Interventions','Colleen Lannon')+". Use its three moves (<b>break a link</b>, <b>add a link</b>, <b>shorten a delay</b>) to name your redesign, and draw the behavior you expect after the change.");
+})();

@@ -77,7 +77,8 @@ document.addEventListener("DOMContentLoaded",function(){WEEKS.forEach(function(w
 
 /* Four approved course integrations, adapted from the 2025 Diversity in Dialogue
    All-in-one Handbook, pp. 8-10, 15-19, 29-35. These update the course data
-   before index.html renders it. Existing seminar tasks, grades and dates stay unchanged. */
+   before index.html renders it. Existing seminar tasks, grades and dates stay unchanged.
+   Long cards keep the main steps in "Do this"; case notes, options and privacy notes sit under "Why this matters". */
 (function(){
 function week(n){return WEEKS.filter(function(w){return w.n===n})[0]}
 week(1).k.splice(3,0,{
@@ -96,20 +97,20 @@ var archetypes=week(6).k.filter(function(t){return t.n.indexOf('Reading 6:')===0
 archetypes.o="Compare the two archetypes in a table. Add one real example of Limits to Growth from campus, a city, or a company. For Success to the Successful, use the opportunity-loop case below instead of a second generic example. Explain one mechanism that could sustain the gap and what evidence would be needed to test it.";
 week(6).k.splice(1,0,{
  g:"Applied Archetypes",n:"Opportunity loops: Success to the Successful",soft:1,u:"In class, Week 6",
- o:"<b>Fictional case:</b> two equally motivated students apply for the same limited number of paid research roles. Student A has free evenings, a laptop, and a contact who explains the application process. Student B works evening shifts, shares a laptop, and has not heard how selection works. These are case details, not assumptions about real groups.<br><b>1.</b> Sort the resources into economic capital (money and material resources), social capital (useful relationships), and cultural capital (knowledge of how institutions work). Some overlap is possible.<br><b>2.</b> Build a loop: access to opportunities &rarr; relevant experience &rarr; application strength &rarr; selection &rarr; further access. Close the loop, label <b>s/o</b> links and <b>R/B</b> loops, and explain how allocating limited places could reinforce an initial advantage.<br><b>3.</b> Distinguish effort from access. Which links are plausible assumptions, and what evidence could support or challenge them?<br><b>4.</b> Propose one intervention, such as transparent selection criteria, open mentoring, or equipment access. Predict one unintended consequence and explain how you would check it.<br><b>Make:</b> a labeled causal loop and a short explanation of your intervention. No sharing of family income or personal background is required.",
+ o:"<b>Case:</b> two equally motivated students apply for the same few paid research roles. Student A has free evenings, a laptop, and a contact who explains the process. Student B works evening shifts, shares a laptop, and does not know how selection works.<br><b>1.</b> Sort their resources: economic (money, equipment), social (useful contacts), cultural (knowing how institutions work).<br><b>2.</b> Draw the loop: access &rarr; experience &rarr; stronger application &rarr; selection &rarr; more access. Label <b>s/o</b> and <b>R/B</b>.<br><b>3.</b> Which links are about access, not effort? What evidence would test them?<br><b>4.</b> Propose one fix and predict one side effect.<br><b>Make:</b> a labeled loop and a short explanation.",
  s:"Keep the class diagram in Student Folder &rarr; Week 6. Use it in the existing Reading 6 task; no separate assignment.",
- w:"Connects feedback and resource allocation to unequal opportunity without reducing outcomes to individual effort. Adapted from the class and capital activities in the 2025 Diversity in Dialogue Handbook, pp. 15&ndash;19."
+ w:"Connects feedback and limited places to unequal opportunity without reducing outcomes to individual effort. The case is fictional, not an assumption about real groups. Fix ideas: transparent selection criteria, open mentoring, or equipment access. No sharing of family income or personal background is required. Adapted from the class and capital activities in the 2025 Diversity in Dialogue Handbook, pp. 15&ndash;19."
 });
 week(10).k.splice(1,0,{
  g:"Applied Leverage Points",n:"Open to everyone? Accessibility redesign challenge",soft:1,u:"In class, Week 10",
- o:"<b>Fictional case:</b> a public event says &ldquo;Everyone welcome.&rdquo; Its announcement is an image with no text alternative, its registration form cannot be completed with a keyboard, and its videos have no captions. Few access requests arrive, so organizers assume no changes are needed.<br><b>1.</b> Map the journey from finding the event to taking part. Identify barriers created by the design, not deficits in a person.<br><b>2.</b> Draw a possible loop linking barriers, participation, visibility of access needs, and investment in access. Label <b>s/o</b> and <b>R/B</b>; treat the loop as a hypothesis to investigate.<br><b>3.</b> Redesign one part. Is your change a surface adjustment, a better information flow, or a rule such as an accessibility check before publication? Explain your choice using Meadows.<br><b>4.</b> Make a before-and-after map and a one-minute redesign pitch. State whose input you would seek, what evidence of improved access you would collect, and one possible unintended effect.<br>You may use a documented website, campus process, or public-service case instead. Do not simulate a disability or ask classmates to disclose one.",
+ o:"<b>Case:</b> an event says &ldquo;Everyone welcome,&rdquo; but the poster is an image with no text, the sign-up form does not work with a keyboard, and the videos have no captions. Few people ask for access, so organizers think nothing needs to change.<br><b>1.</b> Map the steps from finding the event to taking part. Mark barriers in the design, not in people.<br><b>2.</b> Draw a possible loop: barriers &rarr; participation &rarr; visible access needs &rarr; investment in access. Label <b>s/o</b> and <b>R/B</b>.<br><b>3.</b> Redesign one part. Is it a surface change, better information, or a new rule? Explain using Meadows.<br><b>4.</b> Make a before-and-after map and a one-minute pitch.",
  s:"Keep the class maps and pitch notes in Student Folder &rarr; Week 10. No separate graded submission; use this method for your existing leverage-point task if relevant to your project.",
- w:"Shows how barriers and low visibility can reinforce each other, and how changing information or rules can shift a system. Adapted from Disability and Ableism, 2025 Diversity in Dialogue Handbook, pp. 29&ndash;33."
+ w:"Shows how barriers and low visibility can reinforce each other, and how changing information or rules can shift a system. Treat your loop as a hypothesis to investigate. In your pitch, say whose input you would seek, what evidence of better access you would collect, and one possible side effect. You may use a documented website, campus process, or public service instead. Do not simulate a disability or ask classmates to disclose one. Adapted from Disability and Ableism, 2025 Diversity in Dialogue Handbook, pp. 29&ndash;33."
 });
 var stakeholder=week(11).k.filter(function(t){return t.n==='Stakeholder Iceberg'})[0];
 stakeholder.n="Stakeholder Iceberg: intersecting circumstances";
-stakeholder.o="<b>Question:</b> can the same rule have different effects on people within the same stakeholder group?<br><b>1.</b> Map your project topic from two different stakeholder perspectives. For each, separate events, patterns, structures, and mental models.<br><b>2.</b> Add an intersectionality lens: how do circumstances such as language access, paid work, transport, disability, or caring responsibilities interact? Do not treat &ldquo;students&rdquo; or any identity group as all the same.<br><b>Practice case:</b> a service is available only on weekday afternoons through an English-only online booking form. Fictional User A works afternoons and relies on an infrequent bus. Fictional User B is free then but needs booking instructions in another language. Both face barriers, but the mechanisms differ. What changes if two barriers occur together?<br><b>3.</b> Return to your project: distinguish source evidence, your interpretation, and unanswered questions. Do not guess someone&rsquo;s beliefs from their identity. If you lack evidence, state what you need to find out.<br><b>4.</b> Revise the two Icebergs. Explain one assumption the revision changed, whose perspective is still missing, and how you could include it ethically. Use <i>from this position</i>, <i>the rule affects&hellip;because</i>, and <i>our evidence does not yet show</i>. Personal disclosure is not required.";
-stakeholder.w="Intersectionality asks how circumstances and systems of power interact, not simply how many identity labels someone has. This extends the existing Stakeholder Iceberg without adding a new deadline or assessment. Adapted from the 2025 Diversity in Dialogue Handbook, pp. 34&ndash;35.";
+stakeholder.o="<b>Question:</b> can one rule affect people in the same group differently?<br><b>1.</b> Map your project topic from two stakeholder perspectives: events, patterns, structures, mental models.<br><b>2.</b> Add circumstances that interact, such as language, paid work, transport, disability, or caring duties.<br><b>3.</b> Separate your evidence, your interpretation, and your open questions.<br><b>4.</b> Revise both Icebergs. Name one assumption that changed and one perspective still missing.";
+stakeholder.w="<b>Practice case:</b> a service is open only on weekday afternoons and uses an English-only booking form. Fictional User A works afternoons and relies on a slow bus. Fictional User B is free then but needs instructions in another language. Both face barriers, for different reasons. What changes if both barriers happen together? Do not treat &ldquo;students&rdquo; or any identity group as all the same, and do not guess beliefs from identity. Useful phrases: <i>from this position</i>, <i>the rule affects&hellip;because</i>, <i>our evidence does not yet show</i>. Personal disclosure is not required. Intersectionality asks how circumstances and systems of power interact, not how many identity labels someone has. Adapted from the 2025 Diversity in Dialogue Handbook, pp. 34&ndash;35.";
 })();
 
 /* Goodman: improve three existing tasks only; no new cards, deadlines or submissions. */
@@ -136,8 +137,8 @@ function ext(url,title,author){return "<a href='"+url+"' target='_blank' rel='no
 var use="<br><span style='font-size:13px;color:#787D86'>Read it on the original site. Do not copy, repost, or upload the full text, figures, or PDF. You may quote a short passage with the author, title, and link.</span>";
 function add(t,html){t.o+="<br><b>Starter reading:</b> "+html+use}
 add(task(4,function(t){return t.n==='Causal Loop Diagram 1'}),
- ext('https://thesystemsthinker.com/causal-loop-construction-the-basics/','Causal Loop Construction: The Basics','Colleen Lannon')+". Use its four steps (name variables, draw links, label the loop, talk through it) to check your diagram. Then use "+
- ext('https://thesystemsthinker.com/selecting-variable-names-for-causal-loop-diagrams/','Selecting Variable Names for Causal Loop Diagrams','Kellie Wardman')+" to revise your labels: use nouns, remove words like <i>good</i> or <i>decreasing</i>, and choose things that can rise or fall.");
+ ext('https://thesystemsthinker.com/causal-loop-construction-the-basics/','Causal Loop Construction: The Basics','Colleen Lannon')+". Use its four steps (name variables, draw links, label the loop, talk through it) to check your diagram. <b>Optional:</b> "+
+ ext('https://thesystemsthinker.com/selecting-variable-names-for-causal-loop-diagrams/','Selecting Variable Names for Causal Loop Diagrams','Kellie Wardman')+" if your labels feel unclear: use nouns, remove words like <i>good</i> or <i>decreasing</i>, and choose things that can rise or fall.");
 add(task(5,function(t){return t.n==='Behavior-over-time graph'}),
  ext('https://thesystemsthinker.com/behavior-over-time-diagrams-seeing-dynamic-interrelationships/','Behavior Over Time Diagrams: Seeing Dynamic Interrelationships','Daniel Kim')+". Focus on the sections about events versus patterns and the five guidelines. On your existing graph, state your time horizon and one what-if prediction. You may skip the company details.");
 var pg="https://thesystemsthinker.com/wp-content/uploads/2016/01/PG02E-A-Pocket-Guide-to-Using-the-Archetypes.pdf";
@@ -147,4 +148,29 @@ add(task(7,function(t){return t.n.indexOf('Reading 7:')===0}),
  ext(pg,'A Pocket Guide to Using the Archetypes','Daniel H. Kim and Colleen P. Lannon')+" (PDF). Read only the <b>Tragedy of the Commons</b> panel. Use its first three questions (the commons, the incentives, the time frame) in your analysis.");
 add(task(10,function(t){return t.n.indexOf('Open to everyone?')===0}),
  ext('https://thesystemsthinker.com/guidelines-for-designing-systemic-interventions/','Guidelines for Designing Systemic Interventions','Colleen Lannon')+". Use its three moves (<b>break a link</b>, <b>add a link</b>, <b>shorten a delay</b>) to name your redesign, and draw the behavior you expect after the change.");
+})();
+
+/* Workload fixes (Nov 16, 2026): realistic estimates for tasks that gained readings or steps,
+   Final Seminar sources moved to the lighter Week 11, and video editing shown as required work. */
+(function(){
+function week(n){return WEEKS.filter(function(w){return w.n===n})[0]}
+function task(n,test){return week(n).k.filter(test)[0]}
+function est(n,test,m){task(n,test).m=m}
+est(4,function(t){return t.n==='Causal Loop Diagram 1'},90);
+est(4,function(t){return t.n==='Project Topic Proposal'},75);
+est(5,function(t){return t.n==='Behavior-over-time graph'},75);
+est(6,function(t){return t.n.indexOf('Reading 6:')===0},105);
+est(7,function(t){return t.n.indexOf('Reading 7:')===0},90);
+est(9,function(t){return t.n==='Interview Plan'},75);
+est(11,function(t){return t.n.indexOf('Stakeholder Iceberg')===0},75);
+var w12=week(12),i=w12.k.map(function(t){return t.n}).indexOf('Final Seminar sources and questions');
+var src=w12.k.splice(i,1)[0];
+src.u="Sun Apr 18, 23:59";
+src.w="Moved to Week 11 so Week 12 is free for your storyboard. Bring these to the Final Seminar.";
+week(11).k.push(src);
+week(11).b.push(["Seminar Prep","sem"]);
+w12.note="<b>Final Seminar next week.</b> It covers Weeks 1&ndash;12. Your sources and questions were due in Week 11. Sun Apr 25 is a legislative day with a <b>Tuesday</b> schedule, so EAP 101 does not meet.";
+var video=task(13,function(t){return t.n==='Record and edit your final video'});
+delete video.soft;
+video.o="<b>Required.</b> Record narration, add interview clips and your systems diagram, and check sound and captions.";
 })();

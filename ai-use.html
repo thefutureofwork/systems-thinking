@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EAP 101: AI Use Guide</title>
+<meta name="description" content="EAP 101: Systems Thinking. What you may and may not use AI for, assignment by assignment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Public+Sans:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--board:#14161A;--board-2:#1E2127;--amber:#F2A81D;--paper:#FAF9F7;--card:#FFFFFF;--ink:#1A1C20;--ink-2:#4A4E56;--ink-3:#787D86;--rule:#DEDAD2;--rule-2:#EBE8E2;--signal:#B02418;--signal-bg:#FBEDEB;--go:#1F6B4A;--go-bg:#EAF3EE;--amber-bg:#FDF3DF;--r:4px}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:'Public Sans',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.62;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Archivo',system-ui,sans-serif;line-height:1.08;letter-spacing:-.02em}
+a{color:inherit}
+.mast{position:sticky;top:0;z-index:60;background:var(--board);border-bottom:3px solid var(--amber)}
+.mast-in{max-width:1180px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:24px}
+.mark{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:15px;letter-spacing:.1em;color:#fff;text-decoration:none;white-space:nowrap}
+.mark span{color:var(--amber)}
+.mast nav{margin-left:auto;display:flex;gap:4px}
+.mast nav a{font-family:'Azeret Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:#A9AEB8;text-decoration:none;padding:8px 14px;border-radius:var(--r);transition:background .18s,color .18s}
+.mast nav a:hover{background:var(--board-2);color:#fff}
+.mast nav a[aria-current]{color:var(--board);background:var(--amber)}
+.shell{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:216px 1fr;gap:52px;align-items:start}
+.toc{position:sticky;top:84px;padding:48px 0 40px}
+.toc-label{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.toc a{display:block;font-size:14px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:7px 12px;border-left:2px solid var(--rule-2);transition:all .16s}
+.toc a:hover{color:var(--ink);border-left-color:var(--amber);background:#fff}
+.toc .back{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);border-left:none;font-family:'Azeret Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink)}
+.toc .back:hover{border-left:none;background:none;color:var(--amber)}
+.main{padding:48px 0 80px;min-width:0;max-width:820px}
+.kicker{font-family:'Azeret Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.page-h h1{font-variation-settings:'wdth' 116,'wght' 800;font-size:clamp(2.1rem,6vw,3.1rem);text-transform:uppercase;letter-spacing:-.025em}
+.lede{font-size:1.05rem;color:var(--ink-2);margin-top:14px;max-width:58ch}
+section{scroll-margin-top:76px;margin-top:56px}
+.sh{display:flex;align-items:baseline;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:22px}
+.sh h2{font-variation-settings:'wdth' 112,'wght' 800;font-size:1.3rem;text-transform:uppercase}
+.sh .num{font-family:'Azeret Mono',monospace;font-size:11.5px;font-weight:700;color:var(--amber);letter-spacing:.1em}
+p{margin-bottom:14px;max-width:70ch;color:var(--ink-2)}
+p strong,li strong,td strong{color:var(--ink);font-weight:600}
+h3{font-size:1.02rem;font-weight:700;margin:28px 0 10px;color:var(--ink)}
+.rule-box{background:var(--board);border-radius:5px;padding:24px 26px;margin:22px 0 10px}
+.rule-box .t{font-family:'Azeret Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.rule-box p{color:#DDE1E7;max-width:66ch;margin-bottom:10px;font-size:16px}
+.rule-box p:last-child{margin-bottom:0}
+.rule-box b{color:#fff}
+.zone{border:1px solid var(--rule);border-left:4px solid var(--rule);border-radius:var(--r);background:var(--card);padding:18px 22px;margin-bottom:14px}
+.zone.g{border-left-color:var(--go);background:var(--go-bg)}
+.zone.a{border-left-color:var(--amber);background:var(--amber-bg)}
+.zone.r{border-left-color:var(--signal);background:var(--signal-bg)}
+.zone h3{margin:0 0 10px;font-family:'Azeret Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.zone ul{margin:0 0 0 20px;font-size:15px}
+.zone li{margin-bottom:6px;line-height:1.55;color:var(--ink-2)}
+table{border-collapse:collapse;width:100%;margin:6px 0 20px;font-size:14.5px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+th{text-align:left;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;background:var(--board);padding:11px 14px}
+td{padding:13px 14px;border-top:1px solid var(--rule-2);vertical-align:top;color:var(--ink-2);line-height:1.5}
+tbody tr:nth-child(even){background:#FCFBFA}
+.when{font-family:'Azeret Mono',monospace;font-size:12.5px;color:var(--ink);display:block;margin-top:4px}
+.yes{color:var(--go)}
+.no{color:var(--signal)}
+.stmt{font-family:'Azeret Mono',monospace;font-size:11.5px;font-weight:600;color:var(--ink)}
+.callout{background:var(--amber-bg);border-left:3px solid var(--amber);border-radius:3px;padding:15px 19px;margin:18px 0;font-size:15px;line-height:1.58;color:var(--ink-2)}
+.callout.red{background:var(--signal-bg);border-left-color:var(--signal)}
+.callout.green{background:var(--go-bg);border-left-color:var(--go)}
+.callout b{color:var(--ink)}
+ul,ol{margin:0 0 16px 22px;color:var(--ink-2);font-size:15.5px}
+li{margin-bottom:7px;line-height:1.55}
+.form{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:20px 24px;margin:16px 0}
+.form .fl{font-family:'Azeret Mono',monospace;font-size:13px;color:var(--ink);padding:9px 0;border-bottom:1px dashed var(--rule)}
+.form .fl:last-child{border-bottom:none}
+.foot{background:var(--board);margin-top:80px;padding:40px 0;color:#6E7480}
+.foot-in{max-width:1180px;margin:0 auto;padding:0 24px;font-family:'Azeret Mono',monospace;font-size:11px;letter-spacing:.05em;display:flex;gap:20px;flex-wrap:wrap}
+.foot-in a{color:#B4BAC4;text-decoration:none}
+.foot-in a:hover{color:var(--amber)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:16px;top:8px;z-index:100;padding:10px 16px;background:var(--amber);color:var(--board);font-family:'Azeret Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:3px;transform:translateY(-300%)}
+.skip-link:focus{transform:translateY(0)}
+:where(a,button,summary):focus-visible{outline:3px solid var(--amber);outline-offset:2px;box-shadow:0 0 0 5px rgba(20,22,26,.9)}
+@media(max-width:940px){.shell{grid-template-columns:1fr;gap:0}.toc{position:static;padding:32px 0 0;display:flex;flex-wrap:wrap;gap:5px}.toc-label{width:100%;margin-bottom:8px}.toc a{border-left:none;border:1px solid var(--rule);border-radius:var(--r);background:#fff;font-size:13px;padding:7px 13px;min-height:44px;display:flex;align-items:center}.toc .back{margin-top:0;padding-top:7px;border:1px solid var(--ink);border-radius:var(--r);min-height:44px;display:flex;align-items:center}.main{padding-top:34px}}
+@media(max-width:620px){.mast nav{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;scrollbar-width:none}body{font-size:16px}.shell,.mast-in,.foot-in{padding-left:16px;padding-right:16px}table{font-size:13.5px}th,td{padding:10px 11px}.mast nav a{padding:8px 10px;font-size:10.5px;min-height:44px;display:inline-flex;align-items:center}}
+@media print{.mast,.toc,.foot,.skip-link{display:none!important}.shell{display:block;max-width:none}.main{padding:0;max-width:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="mast"><div class="mast-in"><a class="mark" href="index.html">EAP<span>101</span></a><nav aria-label="Primary"><a href="index.html">Schedule</a><a href="systems-mapping.html">Mapping Toolkit</a><a href="ai-use.html" aria-current="page">AI Use</a></nav></div></header>
+<div class="shell">
+<aside class="toc"><p class="toc-label">On this page</p><a href="#zones">Three zones</a><a href="#statement">AI Use Statement</a><a href="#readings">Readings</a><a href="#logs">Listening logs</a><a href="#maps">Maps &amp; tools</a><a href="#sources">Sources &amp; interview</a><a href="#seminars">Seminars</a><a href="#video">Video Project</a><a href="#reflection">Final reflection</a><a href="#wrong">What AI gets wrong</a><a href="#policy">The EAP policy</a><a class="back" href="index.html">&larr; Weekly Schedule</a></aside>
+<main class="main" id="main-content">
+
+<div class="page-h"><p class="kicker">NYU Shanghai &middot; English for Academic Purposes &middot; Spring 2027</p><h1>AI Use Guide</h1><p class="lede">What you may and may not use AI for in EAP 101, assignment by assignment, from Week 1 to Week 14.</p></div>
+
+<div class="rule-box"><p class="t">The one rule</p><p><b>You may use AI in this course. You may not use AI to do the thinking the assignment exists to build.</b></p><p><b>The test:</b> if AI performs the step being assessed, that is a breach of academic integrity. If AI supports you around that step, it is a tool. Every assignment below tells you which is which.</p></div>
+
+<p>Where this guide is more specific than the general policy in your syllabus, this guide applies, because it is written for these tasks. If a use is not listed and you are unsure, ask me before you submit.</p>
+
+<section id="zones"><div class="sh"><span class="num">01</span><h2>Three zones</h2></div>
+<div class="zone g"><h3>Green &middot; use freely, no disclosure needed</h3><ul>
+<li>Looking up a word, a term, or a name you heard or read.</li>
+<li>Asking for a definition or a simpler explanation of a course concept, after you have done the reading or listening.</li>
+<li>Quizzing yourself: ask AI to test you on <b>s</b> / <b>o</b> links, <b>R</b> / <b>B</b> loops, the four Iceberg levels, or the archetype names.</li>
+<li>Checking spelling, grammar, and punctuation in text you have already written yourself.</li>
+<li>Formatting an APA reference for a source you are holding and have actually read.</li>
+<li>Pronunciation practice and speaking rehearsal before a seminar.</li>
+</ul></div>
+<div class="zone a"><h3>Amber &middot; allowed, but write an AI Use Statement</h3><ul>
+<li>Widening a list of ideas after you have written your own.</li>
+<li>Asking AI to critique your own draft: is my research question specific, is this question leading, is this paragraph clear.</li>
+<li>Asking AI to restate a hard passage in simpler English, which you then check against the original text.</li>
+<li>Auto-captions or auto-transcription that you then correct yourself.</li>
+<li>Routine media processing in editing: noise reduction, stabilization, trimming.</li>
+</ul></div>
+<div class="zone r"><h3>Red &middot; never, in any EAP 101 assignment</h3><ul>
+<li>Submitting AI-generated sentences as your own writing, in any language, at any length.</li>
+<li>Having AI produce your map, your causal loop, your graph, your Iceberg, or your labels.</li>
+<li>Asking AI for sources, citations, page numbers, or quotations. It invents them.</li>
+<li>Summarizing a reading, talk, or video you did not read or listen to yourself.</li>
+<li>Writing any part of a reflection. Your reflections are about your life and your change.</li>
+<li>Generating, altering, or voicing interview content, or presenting an unchecked AI transcript as your interviewee&rsquo;s words.</li>
+<li>Cloning a voice, or using a text-to-speech voice in place of your own narration.</li>
+<li>Reading an AI-written script aloud in a seminar, or using AI during a graded seminar or in-class activity.</li>
+</ul></div>
+</section>
+
+<section id="statement"><div class="sh"><span class="num">02</span><h2>The AI Use Statement</h2></div>
+<p>This is the only disclosure format accepted in EAP 101. Four lines, at the end of the file you submit. <b>No marks are deducted for honest amber-zone use.</b> Marks are lost, and integrity procedures start, for use you hide.</p>
+<div class="form"><div class="fl"><b>AI Use Statement</b></div><div class="fl">1. Tool and version:</div><div class="fl">2. What I asked it to do:</div><div class="fl">3. What I did with the output:</div><div class="fl">4. What I checked or changed:</div></div>
+<p><b>Where it goes:</b> at the end of the same document you upload to your Student Folder. For the Video Project, save it as a short text file beside your video in Student Folder &rarr; Video Project, and credit any AI-generated visual on screen.</p>
+<p><b>If you quote AI output:</b> cite it in APA, for example OpenAI. (2027). <i>ChatGPT</i> (version) [Large language model]. https://chat.openai.com/chat</p>
+<div class="callout green"><b>No statement needed</b> for green-zone use only. If you are not sure which zone you were in, write the statement. It costs you nothing.</div>
+</section>
+
+<section id="readings"><div class="sh"><span class="num">03</span><h2>Reading and writing tasks</h2></div>
+<p>In every reading task, the assessed skill is your own comprehension and your own example. AI may support your vocabulary and your sentences. It may not meet the text for you.</p>
+<table><thead><tr><th>Assignment &amp; due</th><th>You may use AI to</th><th>You may not use AI to</th><th>Statement?</th></tr></thead><tbody>
+<tr><td><strong>Reading 1: What Is Systems Thinking?</strong><span class="when">Wk 1 &middot; Sun Jan 24, 23:59</span></td><td class="yes">Define unfamiliar terms from Richmond after reading. Check grammar in your 200&ndash;250 words.</td><td class="no">Summarize the reading. Write your definition of a system. Invent your daily-life example.</td><td class="stmt">Only if more than vocabulary or grammar</td></tr>
+<tr><td><strong>Reading 2: Understanding Mental Models</strong><span class="when">Wk 2 &middot; Sun Jan 31, 23:59</span></td><td class="yes">Ask for a plain-English explanation of &ldquo;mental model&rdquo; after you have read.</td><td class="no">Fill the left column of key ideas, or invent the right column about your own thinking.</td><td class="stmt">Only if more than vocabulary</td></tr>
+<tr><td><strong>Reading 3: The Iceberg Model</strong><span class="when">Wk 3 &middot; Sun Feb 14, 23:59</span></td><td class="yes">Get background facts on your news event, then verify them in a real source.</td><td class="no">Label the four levels for you, or decide which detail belongs at which level.</td><td class="stmt">Yes, if used for background</td></tr>
+<tr><td><strong>Reading 5: Time Delays in Systems</strong><span class="when">Wk 5 &middot; Sun Feb 28, 23:59</span></td><td class="yes">Vocabulary. Grammar check on your finished answers.</td><td class="no">Answer the question set. Supply your delay example.</td><td class="stmt">Only if more than vocabulary</td></tr>
+<tr><td><strong>Reading 6: Limits to Growth vs. Success to the Successful</strong><span class="when">Wk 6 &middot; Sun Mar 7, 23:59</span></td><td class="yes">Ask for a simpler explanation of the difference between the two archetypes, after reading both.</td><td class="no">Build your comparison table, supply your real example, or write the mechanism and evidence explanation.</td><td class="stmt">Yes, if used</td></tr>
+<tr><td><strong>Reading 7: The Tragedy of the Commons</strong><span class="when">Wk 7 &middot; Sun Mar 14, 23:59</span></td><td class="yes">Vocabulary. Grammar check.</td><td class="no">Identify the resource, the users, or the loop. Propose your protective change.</td><td class="stmt">Only if more than vocabulary</td></tr>
+<tr><td><strong>Reading 10: Leverage Points (Meadows)</strong><span class="when">Wk 10 &middot; Sun Apr 11, 23:59</span></td><td class="yes">Ask AI to restate one hard Meadows passage in simpler English, then read the original again to check it.</td><td class="no">Choose your leverage point, or write the explanation of why it could work.</td><td class="stmt">Yes, if restated</td></tr>
+</tbody></table>
+<div class="callout red"><b>Starter readings from The Systems Thinker and the Pocket Guide:</b> read them on the original site. Do not paste the full text into an AI tool, and do not upload, repost, or copy the text, figures, or PDFs anywhere. A short quotation with author, title, and link is fine.</div>
+</section>
+
+<section id="logs"><div class="sh"><span class="num">04</span><h2>Listening Logs 1&ndash;7</h2></div>
+<p>Log 1 (Week 2) is ungraded practice. Logs from Week 4 onward are graded. All logs go to Student Folder &rarr; Listening Logs.</p>
+<table><thead><tr><th>Assignment &amp; due</th><th>You may use AI to</th><th>You may not use AI to</th><th>Statement?</th></tr></thead><tbody>
+<tr><td><strong>Listening Log 1</strong> (ungraded)<span class="when">Wk 2 &middot; Sun Jan 31, 23:59</span></td><td class="yes">Look up words you heard. Check the spelling of names and terms. Grammar check your finished log.</td><td class="no">Use an AI summary, transcript, or video-summary tool instead of listening. Let AI fill the template or write your reaction and questions.</td><td class="stmt">Yes, if you used auto-transcription</td></tr>
+<tr><td><strong>Listening Logs 2, 3, 4</strong><span class="when">Wks 4, 5, 7 &middot; Sun Feb 21 / Sun Feb 28 / Sun Mar 14</span></td><td class="yes">As above. Auto-captions are allowed to check a phrase you could not catch, if you correct them yourself.</td><td class="no">As above. A log written from an AI summary is not your work.</td><td class="stmt">Yes, if you used captions or transcription</td></tr>
+<tr><td><strong>Listening Logs 5, 6, 7</strong><span class="when">Wks 9, 10, 12 &middot; Sat Mar 27 / Sun Apr 11 / Sun Apr 25</span></td><td class="yes">As above.</td><td class="no">As above.</td><td class="stmt">Yes, if you used captions or transcription</td></tr>
+</tbody></table>
+<div class="callout"><b>Plain version:</b> if you did not listen, you did not do the assignment. The point of a log is the gap between what you heard and what you understood. AI closes that gap artificially and you learn nothing.</div>
+</section>
+
+<section id="maps"><div class="sh"><span class="num">05</span><h2>Mapping and systems tools</h2></div>
+<p>These are the assignments where AI use is most tempting and most damaging. Every one of them assesses whether you can see structure yourself. A diagram you did not reason out is worth nothing in a seminar, in your video, or in the one-to-one meeting where I will ask you to explain it.</p>
+<table><thead><tr><th>Assignment &amp; due</th><th>You may use AI to</th><th>You may not use AI to</th><th>Statement?</th></tr></thead><tbody>
+<tr><td><strong>Habits self-check</strong><span class="when">Wk 1 &middot; Sun Jan 24, 23:59</span></td><td class="yes">Ask what a habit card means in simpler English.</td><td class="no">Choose your three habits, or write your real examples.</td><td class="stmt">No</td></tr>
+<tr><td><strong>Constellations of Care map</strong><span class="when">In class, Wks 1 and 9</span></td><td class="yes">Nothing: this is a live class activity. Devices and AI off unless I say otherwise.</td><td class="no">Any AI use during the activity. Any AI-generated map or boundary.</td><td class="stmt">No</td></tr>
+<tr><td><strong>Habit Map 1</strong><span class="when">Wk 2 &middot; Sun Jan 31, 23:59</span></td><td class="yes">Drawing or diagram software for a neat version. Grammar check on your labels.</td><td class="no">Give AI your habit and ask for the map. Invent a trigger, routine, or result.</td><td class="stmt">No</td></tr>
+<tr><td><strong>Personal Iceberg</strong><span class="when">Wk 3 &middot; Sun Feb 14, 23:59</span></td><td class="yes">Grammar check on your finished 250&ndash;300 words.</td><td class="no">Any AI-written text. Asking AI what belief sits under your iceberg. This is about you.</td><td class="stmt">No</td></tr>
+<tr><td><strong>Causal Loop Diagram 1</strong><span class="when">Wk 4 &middot; Sun Feb 21, 23:59</span></td><td class="yes">Diagram software. Ask AI to quiz you on what s, o, R, and B mean. Ask whether your three-sentence explanation reads clearly.</td><td class="no">Build the loop, name the variables, label the links, or write the uncertain-link evidence note.</td><td class="stmt">Yes, if AI commented on your draft</td></tr>
+<tr><td><strong>Behavior-over-time graph</strong><span class="when">Wk 5 &middot; Sun Feb 28, 23:59</span></td><td class="yes">Spreadsheet or drawing tools. Ask AI to explain stocks and flows again.</td><td class="no">Generate the graph, the time horizon, or your what-if prediction.</td><td class="stmt">Yes, if AI commented on your draft</td></tr>
+<tr><td><strong>Opportunity loops &middot; Accessibility redesign</strong><span class="when">In class, Wks 6 and 10</span></td><td class="yes">Nothing during the activity.</td><td class="no">Any AI use in class. Any AI-written loop, redesign, or one-minute pitch.</td><td class="stmt">No</td></tr>
+<tr><td><strong>Stakeholder Iceberg: intersecting circumstances</strong><span class="when">Wk 11 &middot; Sun Apr 18, 23:59</span></td><td class="yes">Grammar check. Ask AI to explain intersectionality in simpler English.</td><td class="no">Generate a stakeholder perspective, invent someone&rsquo;s barriers or beliefs, or write your assumption analysis. AI averages people into one voice, which is exactly the error this task is designed to catch.</td><td class="stmt">Yes, if used at all</td></tr>
+</tbody></table>
+</section>
+
+<section id="sources"><div class="sh"><span class="num">06</span><h2>Sources, bibliography, and interview planning</h2></div>
+<div class="callout red"><b>The citation rule, stated once.</b> AI invents sources. It produces real-looking authors, titles, journals, and page numbers for work that does not exist. <b>Any reference in your work that I cannot open is treated as a fabricated source</b>, whatever its origin. Find your sources in the Library databases and read them before you cite them.</div>
+<table><thead><tr><th>Assignment &amp; due</th><th>You may use AI to</th><th>You may not use AI to</th><th>Statement?</th></tr></thead><tbody>
+<tr><td><strong>Midterm sources</strong> (one primary, one secondary)<span class="when">Wk 6 &middot; Sun Mar 7, 23:59</span></td><td class="yes">Library search tools. AI to format an APA reference for a source you have read.</td><td class="no">Ask AI for sources. Write your two-sentence summaries from an AI description instead of the source.</td><td class="stmt">Yes, if used for formatting or discovery</td></tr>
+<tr><td><strong>Annotated Bibliography</strong> (5+ sources)<span class="when">Wk 9 &middot; Sat Mar 27, 23:59</span></td><td class="yes">Library and database discovery tools. APA formatting help once you hold each source.</td><td class="no">AI-generated reference lists. AI-written annotations. Annotating a source you have not read.</td><td class="stmt">Yes, if used</td></tr>
+<tr><td><strong>Interview Plan</strong><span class="when">Wk 9 &middot; Sat Mar 27, 23:59</span></td><td class="yes">After you have written your own 8&ndash;10 questions, ask AI which are leading or closed, then revise them yourself.</td><td class="no">Generate your questions, write your consent wording, or choose your interviewee.</td><td class="stmt">Yes, if used</td></tr>
+<tr><td><strong>Final Seminar sources and questions</strong><span class="when">Wk 11 &middot; Sun Apr 18, 23:59</span></td><td class="yes">As Midterm sources.</td><td class="no">As Midterm sources.</td><td class="stmt">Yes, if used</td></tr>
+</tbody></table>
+</section>
+
+<section id="seminars"><div class="sh"><span class="num">07</span><h2>Seminars</h2></div>
+<p>Midterm Seminar 25% &middot; Final Seminar 25%. Both are assessed live, from what you say and how you build on others. Nothing you prepare with AI can help you in the room, and a script you did not write will sink you there.</p>
+<table><thead><tr><th>Assignment &amp; due</th><th>You may use AI to</th><th>You may not use AI to</th><th>Statement?</th></tr></thead><tbody>
+<tr><td><strong>Discussion plan</strong><span class="when">Wk 7 &middot; Sun Mar 14, 23:59</span></td><td class="yes">After writing your own three open questions and opening statement, ask AI to predict counterarguments so you can prepare answers.</td><td class="no">AI-written questions or opening statement.</td><td class="stmt">Yes, if used</td></tr>
+<tr><td><strong>Midterm Seminar Discussion (25%)</strong><span class="when">Wk 8 &middot; Mon Mar 15 / Wed Mar 17, in class</span></td><td class="yes">Rehearsal before class: practice phrasing aloud, test your pronunciation.</td><td class="no">Any AI use during the seminar. Reading from an AI-written script. Uploading a plan you did not write.</td><td class="stmt">On the uploaded plan, if AI helped you prepare</td></tr>
+<tr><td><strong>Final Seminar Discussion (25%)</strong><span class="when">Wk 13 &middot; Mon Apr 26 / Wed Apr 28, in class</span></td><td class="yes">As Midterm.</td><td class="no">As Midterm.</td><td class="stmt">On the uploaded plan, if AI helped you prepare</td></tr>
+<tr><td><strong>Individual office meeting</strong><span class="when">Wk 9 &middot; book this week</span></td><td class="yes">Bring your real draft bibliography and interview plan, and your questions for me.</td><td class="no">Bringing text you cannot explain in your own words. If you cannot explain a sentence here, do not submit it.</td><td class="stmt">No</td></tr>
+</tbody></table>
+</section>
+
+<section id="video"><div class="sh"><span class="num">08</span><h2>Video Project (20%)</h2></div>
+<p>Six phases, Week 3 to Week 14. Final video due <b>Wed May 5, 23:59</b>, in Student Folder &rarr; Video Project. This is the assignment where the AI rules are most detailed, because video tools now generate almost everything. Your research, your interviewee&rsquo;s voice, your narration, and your systems analysis must all be real.</p>
+<table><thead><tr><th>Phase &amp; due</th><th>You may use AI to</th><th>You may not use AI to</th><th>Statement?</th></tr></thead><tbody>
+<tr><td><strong>Phase 1 &middot; Topic brainstorm</strong><span class="when">Wk 3 &middot; Sun Feb 14, 23:59</span></td><td class="yes">After listing your own three challenges, ask AI to suggest more, then mark which ideas came from AI.</td><td class="no">Let AI choose your topic or write your questions.</td><td class="stmt">Yes, if used</td></tr>
+<tr><td><strong>Phase 1 &middot; Project Topic Proposal</strong><span class="when">Wk 4 &middot; Sun Feb 21, 23:59</span></td><td class="yes">Ask AI whether your research question is specific and recurring, then rewrite it yourself. Ask it to explain Goodman&rsquo;s criteria.</td><td class="no">Write the 150&ndash;200 words, generate the research question or the &ldquo;why it matters&rdquo;, or supply facts about the problem&rsquo;s history.</td><td class="stmt">Yes, if used</td></tr>
+<tr><td><strong>Phase 4 &middot; Tech check and interview</strong><span class="when">Wk 10 &middot; Sun Apr 11, 23:59</span></td><td class="yes">Noise reduction and stabilization. Auto-transcription you correct against the recording yourself.</td><td class="no">AI-generated or AI-altered interview audio or video. An AI voice for your interviewee. Quoting an unchecked transcript. Keep the original recording.</td><td class="stmt">Yes, if any AI processing</td></tr>
+<tr><td><strong>Phase 5 &middot; Interview reflection</strong><span class="when">Wk 11 &middot; Sun Apr 18, 23:59</span></td><td class="yes">Grammar check on your finished 250&ndash;300 words.</td><td class="no">Any AI-written text about what surprised you. AI-chosen quotations.</td><td class="stmt">No</td></tr>
+<tr><td><strong>Phase 5 &middot; Storyboard / Draft</strong><span class="when">Wk 12 &middot; Sun Apr 25, 23:59</span></td><td class="yes">Storyboard or shot-list templates. Auto-captions you correct.</td><td class="no">AI-written narration script. AI-generated images presented as real evidence. An AI-generated systems diagram.</td><td class="stmt">Yes, if used</td></tr>
+<tr><td><strong>Phase 6 &middot; Record and edit</strong> (required)<span class="when">Wk 13 &middot; due Wed May 5, 23:59</span></td><td class="yes">Editing software, caption correction, audio clean-up.</td><td class="no">Voice cloning or text-to-speech in place of your own narration. You speak your own words.</td><td class="stmt">Yes, if used</td></tr>
+<tr><td><strong>Final Video Project (20%)</strong><span class="when">Wk 14 &middot; Wed May 5, 23:59</span></td><td class="yes">A final watch-through, and a caption pass.</td><td class="no">Submitting without an AI Use Statement if you used any AI tool at any phase, including captions.</td><td class="stmt">Yes, naming every tool</td></tr>
+</tbody></table>
+</section>
+
+<section id="reflection"><div class="sh"><span class="num">09</span><h2>End-of-course reflection</h2></div>
+<div class="callout red"><p><b>Week 14 &middot; Fri May 7, 23:59 &middot; Student Folder &rarr; Week 14. Zero AI.</b> No drafting, no rewriting, no polishing, no translating whole sentences.</p><p>300&ndash;400 words revisiting the three habits you chose in Week 1. Write it yourself, imperfect English and all.</p><p><b>Why this one is stricter:</b> this is the only piece of work in the course whose entire value is that it is yours. An AI-smoothed reflection tells me nothing about what changed in you over fourteen weeks, and it tells you nothing either.</p></div>
+</section>
+
+<section id="wrong"><div class="sh"><span class="num">10</span><h2>What AI gets wrong in this course</h2></div>
+<ul>
+<li><b>Fake sources.</b> It invents citations, authors, and page numbers with total confidence.</li>
+<li><b>Loops that are not loops.</b> It produces diagrams with unlabeled arrows, no s / o markings, and no closed loop. Those fail the simple-loop check.</li>
+<li><b>Events-level thinking.</b> It tells you what happened and what repeats, then stops. Structures and mental models, the two levels that matter most here, are where it is weakest.</li>
+<li><b>Flattened perspectives.</b> It averages people into &ldquo;students&rdquo; or &ldquo;users&rdquo; and loses who faces which barrier. Week 11 exists precisely to train the opposite habit.</li>
+<li><b>Surface fixes.</b> It proposes posters and awareness campaigns when the leverage point is a rule, a flow of information, or who decides.</li>
+<li><b>Local facts.</b> It is confidently wrong about NYU Shanghai, campus services, local context, and anything recent.</li>
+</ul>
+</section>
+
+<section id="policy"><div class="sh"><span class="num">11</span><h2>How this maps to the EAP AI policy</h2></div>
+<p>Your syllabus carries the EAP AI Policy Statement, which sets six requirements for any AI use in an EAP course. This guide is how those six requirements work in EAP 101.</p>
+<table><thead><tr><th>EAP policy requirement</th><th>What it means in EAP 101</th></tr></thead><tbody>
+<tr><td><strong>Critical assessment and citation</strong></td><td>Cite AI output in APA when you quote it. Never cite AI as a source for facts. Every reference in your work must be a real source you have opened and read.</td></tr>
+<tr><td><strong>Demonstrate your own understanding</strong></td><td>I will ask you to explain your own work: in the Week 9 meeting, in both seminars, and in feedback. Your map, your loop, your labels, your sources.</td></tr>
+<tr><td><strong>Transparency</strong></td><td>The four-line AI Use Statement at the end of the file. No other format is accepted.</td></tr>
+<tr><td><strong>Responsibility</strong></td><td>An error AI made is your error. A fabricated citation is a fabricated citation, whoever produced it.</td></tr>
+<tr><td><strong>Group work</strong></td><td>For in-class mapping and seminar groups, agree what you will use before you start, and say what you used.</td></tr>
+<tr><td><strong>Ethical use</strong></td><td>If you are unsure whether a use is permitted, ask me before you submit, not after.</td></tr>
+</tbody></table>
+<div class="callout"><b>One difference worth knowing.</b> The EAP policy says AI can be helpful for &ldquo;brainstorming, drafting, and enhancing your understanding&rdquo;. In EAP 101, <b>drafting means working on text that you wrote</b>: your outline, your sentences, your structure. It does not mean generating sentences and submitting them. Everything else in this guide follows directly from the policy.</div>
+<h3>If you are not sure, and what happens if you hide it</h3>
+<p><b>Ask before you submit.</b> One email or one minute after class: <a href="mailto:kt1992@nyu.edu">kt1992@nyu.edu</a>, or Room N745. Asking is never penalized. Guessing often is.</p>
+<p><b>I will ask you to explain your own work.</b> In the Week 9 meeting, in seminars, and in feedback conversations. If you cannot explain a sentence, a label, or a source in your own words, the submission is treated as not your own and the course follows the NYU Shanghai Statement on Academic Integrity.</p>
+<p><b>Honest disclosure is safe.</b> An AI Use Statement describing amber-zone use costs you no marks. Undisclosed AI in a graded submission is the problem, not the tool.</p>
+</section>
+
+</main>
+</div>
+<footer class="foot"><div class="foot-in"><span>EAP 101: SYSTEMS THINKING / NYU SHANGHAI / SPRING 2027</span><a href="index.html" style="margin-left:auto">WEEKLY SCHEDULE</a><a href="systems-mapping.html">MAPPING TOOLKIT</a></div></footer>
+</body>
+</html>
